@@ -14,10 +14,18 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile6`, function (sprite, l
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, location) {
     game.over(false, effects.splatter)
 })
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile22`, function (sprite, location) {
+    for (let temporary of tiles.getTilesByType(assets.tile`myTile0`)) {
+        tiles.setTileAt(temporary, assets.tile`transparency8`)
+    }
+})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile24`, function (sprite, location) {
     if (mySprite.isHittingTile(CollisionDirection.Top)) {
         game.over(false, effects.splatter)
     }
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile32`, function (sprite, location) {
+    game.over(false, effects.splatter)
 })
 function select_next_level () {
     level += 1
@@ -33,6 +41,9 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile12`, function (sprite, 
     game.over(false, effects.splatter)
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile18`, function (sprite, location) {
+    game.over(false, effects.splatter)
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile29`, function (sprite, location) {
     game.over(false, effects.splatter)
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile20`, function (sprite, location) {
@@ -56,15 +67,41 @@ function start_level () {
     tiles.loadMap(levels[level])
 }
 function set_levels () {
-    levels = [tiles.createMap(tilemap`level3`), tiles.createMap(tilemap`level5`), tiles.createMap(tilemap`level4`)]
+    levels = [
+    tiles.createMap(tilemap`level3`),
+    tiles.createMap(tilemap`level5`),
+    tiles.createMap(tilemap`level4`),
+    tiles.createMap(tilemap`level8`)
+    ]
 }
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile31`, function (sprite, location) {
+    game.over(false, effects.splatter)
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile27`, function (sprite, location) {
+    for (let temporary of tiles.getTilesByType(assets.tile`myTile31`)) {
+        tiles.setTileAt(temporary, assets.tile`transparency8`)
+    }
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile35`, function (sprite, location) {
+    game.over(false, effects.splatter)
+})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile23`, function (sprite, location) {
     if (mySprite.isHittingTile(CollisionDirection.Bottom)) {
         game.over(false, effects.splatter)
     }
 })
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile30`, function (sprite, location) {
+    for (let temporary of tiles.getTilesByType(assets.tile`myTile32`)) {
+        tiles.setTileAt(temporary, assets.tile`transparency8`)
+    }
+})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile26`, function (sprite, location) {
     game.over(false, effects.splatter)
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile28`, function (sprite, location) {
+    for (let temporary of tiles.getTilesByType(assets.tile`myTile29`)) {
+        tiles.setTileAt(temporary, assets.tile`transparency8`)
+    }
 })
 let levels: tiles.WorldMap[] = []
 let level = 0
